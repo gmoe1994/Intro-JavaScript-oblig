@@ -49,10 +49,15 @@ const checkNumbers = () => {
   numArray.sort((a, b) => a - b);
   if (numArray[guessArray.length - 1] === guessArray[guessArray.length - 1]) {
     sortText.innerHTML = "Riktig tall";
+    if (guessArray.length === numArray.length)
+      sortText.innerHTML = "Du gjettet riktig på alt!";
   } else if (
     guessArray.length > numArray.length ||
     numArray[guessArray.length - 1] != guessArray[guessArray.length - 1]
   ) {
+    document
+      .querySelectorAll("#guess > li")
+      .forEach((element) => element.remove());
     guessArray = [];
     sortText.innerHTML = "Feil, prøv igjen";
   }

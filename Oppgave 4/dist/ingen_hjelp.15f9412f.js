@@ -239,7 +239,11 @@ var checkNumbers = function checkNumbers() {
 
   if (numArray[guessArray.length - 1] === guessArray[guessArray.length - 1]) {
     sortText.innerHTML = "Riktig tall";
+    if (guessArray.length === numArray.length) sortText.innerHTML = "Du gjettet riktig på alt!";
   } else if (guessArray.length > numArray.length || numArray[guessArray.length - 1] != guessArray[guessArray.length - 1]) {
+    document.querySelectorAll("#guess > li").forEach(function (element) {
+      return element.remove();
+    });
     guessArray = [];
     sortText.innerHTML = "Feil, prøv igjen";
   }
@@ -275,7 +279,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50023" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58346" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
